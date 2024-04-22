@@ -28,7 +28,7 @@ export const Dashboard = () => {
   return (
     <div>
       <button onClick={()=>{logoutbutton()}}>Logout</button>
-      <h1>welcome to dashboards</h1>
+      <h1>welcome to dashboards mainone</h1>
     </div>
   )
 }
