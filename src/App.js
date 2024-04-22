@@ -1,24 +1,40 @@
-import logo from './logo.svg';
+
+import { Dashboard } from './components/Dashboard';
+import { Loginpage } from './components/Loginpage';
+import { Signuppage } from './components/Signuppage';
 import './App.css';
+import {BrowserRouter, Route, Routes} from "react-router-dom"
+import { useEffect, useState } from 'react';
 
 function App() {
+  const [login,setlogin]=useState(false)
+
+  useEffect(()=>{
+    mainmain()
+  })
+  const mainmain=async()=>{
+    const ddd=await localStorage.getItem("islogin")
+    console.log(ddd,"ddd")
+    setlogin(ddd)
+    
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <BrowserRouter>
+  <Routes>
+    {/* <Route path="/" element={<Loginpage></Loginpage>}></Route>
+    <Route path="signup" element={<Signuppage></Signuppage>}></Route>
+    <Route path="dash" element={<Dashboard></Dashboard>}></Route> */}
+    {login? 
+  <Route path="dash" element={<Dashboard></Dashboard>}></Route>
+    : 
+    <>
+     <Route path="/" element={<Loginpage></Loginpage>}></Route>
+    <Route path="signup" element={<Signuppage></Signuppage>}></Route>
+    <Route path="dash" element={<Dashboard></Dashboard>}></Route>
+    </>
+    }
+  </Routes>
+  </BrowserRouter>
   );
 }
 
